@@ -118,3 +118,4 @@ deploy:
   type: git
   repo: 
     github: git@github.com:javmain/wiki.git,master
+    coding: git@git.coding.net:javmain/wiki.git,master
