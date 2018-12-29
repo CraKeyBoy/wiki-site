@@ -205,6 +205,19 @@ git push -u origin master
 git clone https://github.com/usern/repositoryname.git
 ```
 
+#### 修改远程仓库地址
+
+```bash
+git remote set-url origin https://github.com/usern/repositoryname.git
+```
+
+或先删除后加
+
+```bash
+git remote rm origin
+git remote add origin https://github.com/usern/repositoryname.git
+```
+
 ### 分支
 
 #### 创建分支
@@ -321,6 +334,18 @@ git pull
 
 如果有冲突，要先处理冲突。
 
+#### Github fork 出来的分支与主库保持同步
+
+```bash
+git remote add upstream https://github.com/usern/repositoryname.git
+git fetch upstream
+
+git checkout master
+git merge upstream/master
+```
+
+
+
 ### 标签
 
 tag 就是一个让人容易记住的有意义的名字，它跟某个 commit 绑在一起。
@@ -378,3 +403,7 @@ git tag -d <tagname>
 ```bash
 git push origin :refs/tags/<tagname>
 ```
+
+### git 分支开发最佳实践
+
+![git-branch-dev](git-branch-dev.jpeg)
