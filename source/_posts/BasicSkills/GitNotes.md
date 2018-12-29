@@ -407,3 +407,55 @@ git push origin :refs/tags/<tagname>
 ### git 分支开发最佳实践
 
 ![git-branch-dev](git-branch-dev.jpeg)
+
+
+### 子模块 submodule
+
+`git Submodule` 是一个很好的多项目使用共同类库的工具，他允许类库项目做为 `repository` ,子项目做为一个单独的  `git` 项目存在父项目中，子项目可以有自己的独立的`commit`，`push`，`pull`。而父项目以`Submodule`的形式包含子项目，父项目可以指定子项目 `header` ，父项目中会的提交信息包含 `Submodule` 的信息，再 `clone` 父项目的时候可以把 `Submodule` 初始化。
+
+#### 添加 Submodule
+
+```bash
+git submodule add git@github.com:usern/repositoryname.git folder
+```
+
+#### 更新 Submodule
+
+在父目录下更新
+
+```bash
+git submodule foreach git pull
+```
+
+在 `Submodule` 目录下更新
+
+```bash
+cd folder
+git pull
+```
+
+#### 克隆含有子模块的项目
+
+采用递归参数 `--recursive`
+
+```bash
+git clone git@github.com:usern/repositoryname.git --recursive
+```
+
+先 clone 父目录，再初始化 Submodule
+
+```bash
+git clone git@github.com:usern/repositoryname.git
+cd repositoryname
+git submodule init
+git submodule init
+```
+
+#### 删除 Submodule
+
+```bash
+git rm --cached repositoryname
+rm -rf repositoryname
+rm .gitmodules
+git commit -a -m 'remove repositoryname submodule'
+```
