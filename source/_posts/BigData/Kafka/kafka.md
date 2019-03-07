@@ -16,12 +16,6 @@ Kafka的架构和涉及到的名词：
 8. Broker：Kafka 中使用 Broker 来接受 Producer 和 Consumer 的请求，并把 Message 持久化到本地磁盘。每个 Cluster 当中会选举出一个 Broker 来担任 Controller ，负责处理 Partition 的 Leader 选举，协调 Partition 迁移等工作。
 9. ISR(In-Sync Replica)：是 Replicas 的一个子集，表示目前 Alive 且与 Leader 能够 “Catch-up” 的 Replicas 集合。由于读写都是首先落到 Leader 上，所以一般来说通过同步机制从Leader 上拉取数据的 Replica 都会和 Leader 有一些延迟(包括了延迟时间和延迟条数两个维度)，任意一个超过阈值都会把该 Replica 踢出 ISR。每个 Partition 都有它自己独立的 ISR。
 
---------------------- 
-作者：stark_summer 
-来源：CSDN 
-原文：https://blog.csdn.net/stark_summer/article/details/50144591 
-版权声明：本文为博主原创文章，转载请附上博文链接！
-
 # kafka 应用场景
 
 kafka 作为时下最流行的开源消息系统，被广泛地应用在数据缓冲、异步通信、汇集日志、系统解耦等方面
@@ -42,6 +36,8 @@ kafka 为了保证数据写入性能，基于操作系统的页缓存（page cac
 
 
 > 参考资料
+>
+>[kafka 高吞吐量性能揭秘](https://blog.csdn.net/stark_summer/article/details/50144591 )
 >
 >[Linux 内核的文件 Cache 管理机制介绍](https://www.ibm.com/developerworks/cn/linux/l-cache/index.html)
 >
